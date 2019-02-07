@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { loadEvents } from '../actions/events';
 import EventsList from './EventsList';
+import CreateEventFormContainer from './CreateEventFormContainer';
 
 class EventsListContainer extends React.Component {
   componentDidMount() {
@@ -10,7 +11,13 @@ class EventsListContainer extends React.Component {
   }
 
   render() {
-    return <EventsList events={this.props.events} />;
+    if (!this.props.events) return 'Loading';
+    return (
+      <div>
+        <EventsList events={this.props.events} />
+        <CreateEventFormContainer />
+      </div>
+    );
   }
 }
 

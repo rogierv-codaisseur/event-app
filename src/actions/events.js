@@ -2,6 +2,7 @@ import request from 'superagent';
 
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS';
 export const EVENTS_FETCHED = 'EVENTS_FETCHED';
+export const EVENT_FETCHED = 'EVENT_FETCHED';
 
 const baseUrl = 'http://localhost:4000';
 
@@ -35,5 +36,16 @@ export const createEvent = data => dispatch => {
     .then(response => {
       dispatch(eventCreateSuccess(response.body));
     })
+    .catch(console.error);
+};
+
+const eventFetched = event => ({
+  type: EVENT_FETCHED,
+  event
+});
+
+export const loadEvent = id => dispatch => {
+  request(`${baseUrl}/events/${id}`)
+    .then(response => dispatch(eventFetched(response.body)))
     .catch(console.error);
 };

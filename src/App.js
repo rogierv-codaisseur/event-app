@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 
 import store from './store';
 import EventsListContainer from './components/EventsListContainer';
-import CreateEventFormContainer from './components/CreateEventFormContainer';
+import EventDetailsContainer from './components/EventDetailsContainer';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
       <Provider store={store}>
         <div>
           <Route path='/' exact component={EventsListContainer} />
-          <CreateEventFormContainer />
+          <Route path='/events/:id' component={EventDetailsContainer} />
         </div>
       </Provider>
     );

@@ -5,8 +5,7 @@ export default (state = null, action = {}) => {
     case EVENTS_FETCHED:
       return [...action.events];
     case EVENT_CREATE_SUCCESS:
-      if (!action.events) return state;
-      return [...state, action.events];
+      return [...state, action.event];
     default:
       return state;
   }
