@@ -16,9 +16,11 @@ const eventsFetched = events => ({
 export const loadEvents = () => (dispatch, getState) => {
   // when the state already contains events, we don't fetch them again
   if (getState().events) return;
+  const jwt = getState().currentUser;
 
   // a GET /events request
   request(`${baseUrl}/events`)
+    .set('Authorization', `Bearer ${jwt}`)
     .then(response => {
       // dispatch an EVENTS_FETCHED action that contains the events
       dispatch(eventsFetched(response.body));
@@ -31,9 +33,12 @@ const eventCreateSuccess = event => ({
   event
 });
 
-export const createEvent = data => dispatch => {
+export const createEvent = data => (dispatch, getState) => {
+  const jwt = getState().currentUser;
+
   request
     .post(`${baseUrl}/events`)
+    .set('Authorization', `Bearer ${jwt}`)
     .send(data)
     .then(response => {
       dispatch(eventCreateSuccess(response.body));
@@ -46,8 +51,11 @@ const eventFetched = event => ({
   event
 });
 
-export const loadEvent = id => dispatch => {
+export const loadEvent = id => (dispatch, getState) => {
+  const jwt = getState().currentUser;
+
   request(`${baseUrl}/events/${id}`)
+    .set('Authorization', `Bearer ${jwt}`)
     .then(response => dispatch(eventFetched(response.body)))
     .catch(console.error);
 };
@@ -57,9 +65,12 @@ const eventDeleted = event => ({
   event
 });
 
-export const deleteEvent = id => dispatch => {
+export const deleteEvent = id => (dispatch, getState) => {
+  const jwt = getState().currentUser;
+
   request
     .delete(`${baseUrl}/events/${id}`)
+    .set('Authorization', `Bearer ${jwt}`)
     .then(() => {
       dispatch(eventDeleted({ id }));
     })
@@ -71,9 +82,12 @@ const eventUpdateSuccess = event => ({
   event
 });
 
-export const updateEvent = (id, data) => dispatch => {
+export const updateEvent = (id, data) => (dispatch, getState) => {
+  const jwt = getState().currentUser;
+
   request
     .patch(`${baseUrl}/events/${id}`)
+    .set('Authorization', `Bearer ${jwt}`)
     .send(data)
     .then(() => {
       dispatch(eventUpdateSuccess({ id }));
