@@ -29,6 +29,12 @@
       "name": "New Years Eve",
       "date": "31-12-2022",
       "description": "It's going to be wait for it."
+    },
+    {
+      "name": "Rogier",
+      "date": "",
+      "description": "Test",
+      "id": 6
     }
   ],
   "comments": [
