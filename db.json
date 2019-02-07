@@ -7,22 +7,34 @@
       "description": "This is the best demo night you have ever seen. It's a-m-a-z-i-n-g. Seriously. Lets make a dent in the universe."
     },
     {
-      "name": "",
-      "date": "",
-      "description": "",
-      "id": 7
+      "id": 2,
+      "name": "WWDC: iPhone XXL keynote",
+      "date": "04-08-2020",
+      "description": "The best iPhone we've build so far. For realz this time. "
     },
     {
-      "name": "",
-      "date": "",
-      "description": "",
-      "id": 9
+      "id": 3,
+      "name": "Cat-cuddling world record",
+      "date": "09-09-2021",
+      "description": "Can we has cheaseburgerz?"
     },
     {
-      "name": "",
+      "id": 4,
+      "name": "Fake-sleep meetup",
+      "date": "01-02-2022",
+      "description": "This is a short, simple and meaningful meetup for people that casually like to fake-sleep."
+    },
+    {
+      "id": 5,
+      "name": "New Years Eve",
+      "date": "31-12-2022",
+      "description": "It's going to be wait for it."
+    },
+    {
+      "name": "Rogier",
       "date": "",
-      "description": "",
-      "id": 10
+      "description": "Another event",
+      "id": 6
     }
   ],
   "comments": [
