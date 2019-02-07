@@ -3,6 +3,7 @@ import request from 'superagent';
 export const EVENT_CREATE_SUCCESS = 'EVENT_CREATE_SUCCESS';
 export const EVENTS_FETCHED = 'EVENTS_FETCHED';
 export const EVENT_FETCHED = 'EVENT_FETCHED';
+export const EVENT_DELETE_SUCCESS = 'EVENT_DELETE_SUCCESS';
 
 const baseUrl = 'http://localhost:4000';
 
@@ -47,5 +48,20 @@ const eventFetched = event => ({
 export const loadEvent = id => dispatch => {
   request(`${baseUrl}/events/${id}`)
     .then(response => dispatch(eventFetched(response.body)))
+    .catch(console.error);
+};
+
+const eventDeleted = event => ({
+  type: EVENT_DELETE_SUCCESS,
+  event
+});
+
+export const deleteEvent = id => dispatch => {
+  console.log('id test:', id);
+  request
+    .delete(`${baseUrl}/events/${id}`)
+    .then(() => {
+      dispatch(eventDeleted({ id }));
+    })
     .catch(console.error);
 };
